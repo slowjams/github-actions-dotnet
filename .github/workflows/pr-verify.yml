@@ -1,0 +1,26 @@
+name: PR Verify
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    name: PR Verify Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4 
+        # downloads repository and places it in the runner's working directory (/home/runner/work/your-repo-name/your-repo-name on Ubuntu runners)
+        # it checks out the commit that triggered the workflow (like the HEAD of a pull request or the latest commit on a branch)
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
+        # 1. Installs .NET SDK: Downloads and installs the specified version of the .NET SDK on the runner machine.
+        # 2. Adds the .NET CLI tools to the system PATH so you can use dotnet commands in subsequent steps.
+        with:
+          dotnet-version: 8.0
+
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+     
