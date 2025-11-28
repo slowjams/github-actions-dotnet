@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout My Repository
-        uses: actions/checkout@v4 
+      - uses: actions/checkout@v4 
         # downloads repository and places it in the runner's working directory (/home/runner/work/your-repo-name/your-repo-name on Ubuntu runners)
         # it checks out the commit that triggered the workflow (like the HEAD of a pull request or the latest commit on a branch)
 
